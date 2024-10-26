@@ -1,26 +1,91 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/styles.css">
-    <title>API de Nombres</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/styles.css"> 
+    
+    <style>
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            text-shadow: 0px 0px 8px rgba(17, 63, 53, 0.6);
+            letter-spacing: 2px;
+            color: rgb(247, 255, 252);
+        }
+
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background-color: #1f1f1f;
+            color: #c800ff;
+            box-shadow: 0 4px 8px rgba(255, 0, 208, 0.2);
+        }
+
+        h2 {
+            color: #fafafa;
+            text-shadow: 0px 0px 6px rgba(255, 0, 204, 0.5);
+            font-weight: 300;
+        }
+
+        .nombres-section {
+            background-color: #1a1a1a;
+            border: 1px solid #d000ff;
+            box-shadow: 0 0 15px rgba(225, 0, 255, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nombres-section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+        }
+
+        .list-item {
+            padding: 0.75rem;
+            border-bottom: 1px solid #333;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .list-item:hover {
+            background: #f700ff;
+            color: #0d0d0d;
+            font-weight: bold;
+            box-shadow: 0px 0px 10px rgba(255, 0, 200, 0.5);
+        }
+
+        footer {
+            background-color: #1f1f1f;
+            color: #e0e0e0;
+            border-top: 1px solid #333;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+        }
+    </style>
 </head>
+
 <body>
+
     <header>
-        <h1>Bienvenidx a la API de Nombres</h1>
+        <h1>FastAPI</h1>
     </header>
     <main>
         <section class="nombres-section">
             <h2>Nombres Disponibles</h2>
             <ul id="nombres-list">
-                <!-- Los nombres se llenarán aquí mediante JavaScript -->
+        
             </ul>
         </section>
     </main>
-    <footer>
-        <p>&copy; 2024 Tu Nombre. Todos los derechos reservados.</p>
-    </footer>
+   
+
+
     <script>
         async function obtenerNombres() {
             const response = await fetch('/nombres');
@@ -30,11 +95,14 @@
             data.nombres.forEach(nombre => {
                 const li = document.createElement('li');
                 li.textContent = nombre;
+                li.classList.add('list-item'); // Añadiendo la clase para estilos
                 nombresList.appendChild(li);
             });
         }
 
         obtenerNombres();
     </script>
+
 </body>
+
 </html>
